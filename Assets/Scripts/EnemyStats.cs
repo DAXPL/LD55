@@ -1,19 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static PlayerShoot;
 
-public class EnemyStats : MonoBehaviour, ISatisfactionable {
+public class EnemyStats : MonoBehaviour, IDamageable {
     public AbilityName abilityName;
     public NeedName needName;
     public float movementSpeed;
     public float needLevel;
 
-    public void DecreaseLevel(int satisfaction) {
+    public void Damage(int satisfaction, NeedName givenNeedName) {
+        if (givenNeedName != needName) return;
+
         needLevel -= satisfaction;
 
         if (needLevel <= 0) {
             Destroy(gameObject);
         }
     }
+
 }

@@ -16,12 +16,4 @@ public class PlayerShoot : MonoBehaviour {
     public void Shoot() {
         GameObject bullet = Instantiate(bulletPrefab);
     }
-
-    //public void DecreaseLevel(int damage, string damageType) {
-       
-    //}
-}
-
-public interface ISatisfactionable {
-    void DecreaseLevel(int damage);
 }

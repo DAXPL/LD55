@@ -18,12 +18,14 @@ public class Player : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
     }
+
     private void Update()
     {
         Vector3 movementVector = transform.forward * playerInput.x + transform.right * -playerInput.y;
         characterController.Move(movementVector * speed * Time.deltaTime);
         playerSprite.gameObject.transform.localPosition = new Vector3(0,1+Mathf.Cos(Time.time)*0.1f,0);
     }
+
     public void Move(InputAction.CallbackContext context)
     {
         playerInput = context.ReadValue<Vector2>();
@@ -35,30 +37,46 @@ public class Player : MonoBehaviour
         }
         
     }
+
+    // sleep
     public void UseSkill1(InputAction.CallbackContext context)
     {
 
         if (context.started)
         {
-            ShootProjectile(0);
+            ShootProjectile(0, NeedName.sleep);
         }
     }
+
+    // food
     public void UseSkill2(InputAction.CallbackContext context)
     {
-        if (context.started) Debug.Log("2");
+        if (context.started) {
+            ShootProjectile(0, NeedName.food);
+        }
     }
+
+    // attention
     public void UseSkill3(InputAction.CallbackContext context)
     {
-        if (context.started) Debug.Log("3");
+        if (context.started) {
+            ShootProjectile(0, NeedName.attention);
+        }
     }
+
+    // litter
     public void UseSkill4(InputAction.CallbackContext context)
     {
-        if (context.started) Debug.Log("4");
+        if (context.started) {
+            ShootProjectile(0, NeedName.litter);
+        }
     }
-    private void ShootProjectile(int id)
+
+    private void ShootProjectile(int id, NeedName needName)
     {
         Rigidbody newProjectile = Instantiate(projectiles[id], transform.position+Vector3.up, Quaternion.identity, null);
         Vector3 force = (new Vector3(-shootingVector.y, 0, shootingVector.x)) * 1000;
         newProjectile.AddForce(force);
+        newProjectile.GetComponent<Projectile>().needName = needName;
     }
 }

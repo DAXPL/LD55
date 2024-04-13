@@ -6,6 +6,7 @@ public class EnemyBehaviour : MonoBehaviour {
     [SerializeField] private GameObject enemyTemplate;
     [SerializeField] private List<Enemy> enemyList;
     [SerializeField] private List<Material> enemySprites;
+    [SerializeField] private GameObject player;
 
     IEnumerator Start () {
         while (true) {
@@ -14,6 +15,9 @@ public class EnemyBehaviour : MonoBehaviour {
 
             // Set the enemy material to a random one from a list
             enemy.GetComponent<MeshRenderer>().material = enemySprites[ChooseEnemySprite()];
+
+            // Set the enemy target to player
+            enemy.GetComponent<EnemyMovement>().StartEnemyMovementCoroutine(player);
 
             EnemyStats stats = enemy.GetComponent<EnemyStats>();
 

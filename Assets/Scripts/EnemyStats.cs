@@ -6,5 +6,4 @@ public class EnemyStats : MonoBehaviour {
     public AbilityName abilityName;
     public NeedName needName;
     public float movementSpeed;
-
 }

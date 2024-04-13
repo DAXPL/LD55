@@ -8,10 +8,11 @@ using UnityEngine.Windows;
 public class Player : MonoBehaviour
 {
     private CharacterController characterController;
-    [SerializeField] private Vector2 playerInput;
-    [SerializeField] private Vector2 shootingVector;
+    private Vector2 playerInput;
+    private Vector2 shootingVector;
     [SerializeField] private float speed=1;
     [SerializeField] private Rigidbody[] projectiles;
+    [SerializeField] private SpriteRenderer playerSprite;
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     {
         Vector3 movementVector = transform.forward * playerInput.x + transform.right * -playerInput.y;
         characterController.Move(movementVector * speed * Time.deltaTime);
+        playerSprite.gameObject.transform.localPosition = new Vector3(0,1+Mathf.Cos(Time.time)*0.1f,0);
     }
     public void Move(InputAction.CallbackContext context)
     {
@@ -29,6 +31,7 @@ public class Player : MonoBehaviour
         if(playerInput.magnitude > 0 )
         {
             shootingVector = playerInput;
+            playerSprite.flipX = playerInput.x < 0;
         }
         
     }
@@ -54,7 +57,7 @@ public class Player : MonoBehaviour
     }
     private void ShootProjectile(int id)
     {
-        Rigidbody newProjectile = Instantiate(projectiles[id], transform.position, Quaternion.identity, null);
+        Rigidbody newProjectile = Instantiate(projectiles[id], transform.position+Vector3.up, Quaternion.identity, null);
         Vector3 force = (new Vector3(-shootingVector.y, 0, shootingVector.x)) * 1000;
         newProjectile.AddForce(force);
     }

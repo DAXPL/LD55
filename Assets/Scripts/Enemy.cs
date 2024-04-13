@@ -10,7 +10,7 @@ public enum AbilityName {
 }
 
 public enum NeedName {
-    sleep,
+    play,
     food,
     attention,
     litter

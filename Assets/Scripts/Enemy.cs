@@ -21,5 +21,5 @@ public class Enemy : ScriptableObject {
     public AbilityName abilityName;
     public NeedName needName;
     public float movementSpeed;
-
+    public float needLevel;
 }

@@ -25,8 +25,9 @@ public class EnemyBehaviour : MonoBehaviour {
             stats.abilityName = enemyList[ChooseEnemyType()].abilityName;
             stats.needName = enemyList[ChooseEnemyType()].needName;
             stats.movementSpeed = enemyList[ChooseEnemyType()].movementSpeed;
+            stats.needLevel = enemyList[ChooseEnemyType()].needLevel;
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(20);
         }
     }
 

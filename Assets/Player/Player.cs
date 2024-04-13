@@ -38,13 +38,13 @@ public class Player : MonoBehaviour
         
     }
 
-    // sleep
+    // play
     public void UseSkill1(InputAction.CallbackContext context)
     {
 
         if (context.started)
         {
-            ShootProjectile(0, NeedName.sleep);
+            ShootProjectile(0, NeedName.play);
         }
     }
 

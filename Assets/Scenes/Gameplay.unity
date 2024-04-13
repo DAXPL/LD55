@@ -301,6 +301,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &196081039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 196081041}
+  - component: {fileID: 196081040}
+  m_Layer: 0
+  m_Name: Enemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &196081040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196081039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8f878b1394a2043a7f695ecc895b1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTemplate: {fileID: 4390816096895456605, guid: 205cab7391920b34caf9727054d32096,
+    type: 3}
+  enemyList:
+  - {fileID: 11400000, guid: 6c803cde19e81134caf1ffa3bb4311d2, type: 2}
+  - {fileID: 11400000, guid: 7d90832644b58ec4fa4ead862a1c9379, type: 2}
+  enemySprites:
+  - {fileID: 21300000, guid: 031c5726ca65234478e9bd23e0009fc2, type: 3}
+  - {fileID: 21300000, guid: bc1dcc781e15d404495c9e99cc2b62fa, type: 3}
+  - {fileID: 21300000, guid: 388a3fcf94c494145b2a8ff50ad46419, type: 3}
+  player: {fileID: 767646304}
+--- !u!4 &196081041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196081039}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &203844586
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,6 +722,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &767646304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6263760130422011093, guid: c5f2e84d90761824da7a3df1ccf174f8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1498848260}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &785697936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -900,7 +960,7 @@ PrefabInstance:
     - target: {fileID: 5116958441456361345, guid: c5f2e84d90761824da7a3df1ccf174f8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 5.48
       objectReference: {fileID: 0}
     - target: {fileID: 5116958441456361345, guid: c5f2e84d90761824da7a3df1ccf174f8,
         type: 3}
@@ -1176,3 +1236,4 @@ SceneRoots:
   - {fileID: 785697936}
   - {fileID: 1498848260}
   - {fileID: 112737905}
+  - {fileID: 196081041}

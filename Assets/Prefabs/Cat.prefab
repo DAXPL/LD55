@@ -113,15 +113,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a7caa2ff0cad84d8df42e28559b1dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  images:
+  imagesSource:
   - {fileID: 21300000, guid: 388a3fcf94c494145b2a8ff50ad46419, type: 3}
   - {fileID: 21300000, guid: bc1dcc781e15d404495c9e99cc2b62fa, type: 3}
   - {fileID: 21300000, guid: 031c5726ca65234478e9bd23e0009fc2, type: 3}
-  audios:
+  audiosSource:
   - {fileID: 8300000, guid: 5bd56ff22ce840c47bc2b80ce3668e9c, type: 3}
   - {fileID: 8300000, guid: 53554181823e468448625cc21e0c7900, type: 3}
   - {fileID: 8300000, guid: 7c010a34772205549841619bc01972d5, type: 3}
-  m_Sprite: {fileID: 0}
 --- !u!82 &2172279532677879157
 AudioSource:
   m_ObjectHideFlags: 0

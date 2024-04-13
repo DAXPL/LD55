@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour {
     [SerializeField] private GameObject enemyTemplate;
     [SerializeField] private List<Enemy> enemyList;
-    [SerializeField] private List<Material> enemySprites;
+    [SerializeField] private List<Sprite> enemySprites;
     [SerializeField] private GameObject player;
 
     IEnumerator Start () {
@@ -14,7 +14,7 @@ public class EnemyBehaviour : MonoBehaviour {
             GameObject enemy = Instantiate(enemyTemplate);
 
             // Set the enemy material to a random one from a list
-            enemy.GetComponent<MeshRenderer>().material = enemySprites[ChooseEnemySprite()];
+            enemy.GetComponent<SpriteRenderer>().sprite = enemySprites[ChooseEnemySprite()];
 
             // Set the enemy target to player
             enemy.GetComponent<EnemyMovement>().StartEnemyMovementCoroutine(player);

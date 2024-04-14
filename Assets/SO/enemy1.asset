@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: 2
   needName: 1
-  movementSpeed: 20
+  movementSpeed: 2
   needLevel: 120

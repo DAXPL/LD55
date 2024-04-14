@@ -20,11 +20,15 @@ public class Player : MonoBehaviour
         characterController = GetComponent<CharacterController>();
     }
 
+
     private void Update()
     {
         Vector3 movementVector = transform.forward * playerInput.x + transform.right * -playerInput.y;
         characterController.Move(movementVector * speed * Time.deltaTime);
-        playerSprite.gameObject.transform.localPosition = new Vector3(0,1+Mathf.Cos(Time.time)*0.1f,0);
+        playerSprite.gameObject.transform.localPosition = new Vector3(0, 1+Mathf.Cos(Time.time)*0.1f, 0);
+
+        // Fix player moving higher after collision with other objects
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
 
     public void Move(InputAction.CallbackContext context)

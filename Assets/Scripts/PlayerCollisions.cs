@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerCollisions : MonoBehaviour, IDamageable {
-    public int health;
-
+    public int health;//Hp powinno byæ prywatne
+    private bool isAlive = true;
+    [SerializeField] private GameObject deathCanvas;
     public void Damage(int damage, string attackName) {
         switch (attackName) {
             case "scratch":
@@ -29,7 +32,7 @@ public class PlayerCollisions : MonoBehaviour, IDamageable {
         health -= value;
 
         if (health <= 0) {
-            Destroy(gameObject);
+            NeutralizePlayer();
         }
     }
 
@@ -37,7 +40,7 @@ public class PlayerCollisions : MonoBehaviour, IDamageable {
         health -= value;
 
         if (health <= 0) {
-            Destroy(gameObject);
+            NeutralizePlayer();
         }
     }
 
@@ -45,7 +48,7 @@ public class PlayerCollisions : MonoBehaviour, IDamageable {
         health -= value;
 
         if (health <= 0) {
-            Destroy(gameObject);
+            NeutralizePlayer();
         }
     }
 
@@ -53,7 +56,30 @@ public class PlayerCollisions : MonoBehaviour, IDamageable {
         health -= value;
 
         if (health <= 0) {
-            Destroy(gameObject);
+            NeutralizePlayer();
         }
+    }
+
+    private void NeutralizePlayer()
+    {
+        if(isAlive)
+        {
+            isAlive = false;//Semaphore
+            StartCoroutine(DeathSentence());
+        }
+    }
+
+    IEnumerator DeathSentence()
+    {
+        Debug.Log("Player Death");
+        if (TryGetComponent(out Player p))
+        {
+            p.ChangePlayerSpeed(0);
+            p.TogglePlayerActions(false);
+        }
+        deathCanvas.SetActive(true);
+        //Play death sound here
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(2);
     }
 }

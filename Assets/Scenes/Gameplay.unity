@@ -125,12 +125,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!212 &20781915 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 3003169514463806840, guid: c5f2e84d90761824da7a3df1ccf174f8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1498848260}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &67348464
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,46 +901,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 748765639289639984, guid: c5f2e84d90761824da7a3df1ccf174f8,
-        type: 3}
-      propertyPath: m_BackGroundColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 748765639289639984, guid: c5f2e84d90761824da7a3df1ccf174f8,
-        type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 748765639289639984, guid: c5f2e84d90761824da7a3df1ccf174f8,
-        type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 748765639289639984, guid: c5f2e84d90761824da7a3df1ccf174f8,
-        type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3003169514463806840, guid: c5f2e84d90761824da7a3df1ccf174f8,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3457447786212364166, guid: c5f2e84d90761824da7a3df1ccf174f8,
-        type: 3}
-      propertyPath: playerSprite
-      value: 
-      objectReference: {fileID: 20781915}
-    - target: {fileID: 3506943478900390612, guid: c5f2e84d90761824da7a3df1ccf174f8,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3589040538477885453, guid: c5f2e84d90761824da7a3df1ccf174f8,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 5116958441456361345, guid: c5f2e84d90761824da7a3df1ccf174f8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -997,20 +951,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5923508841072501484, guid: c5f2e84d90761824da7a3df1ccf174f8,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 6263760130422011093, guid: c5f2e84d90761824da7a3df1ccf174f8,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6263760130422011093, guid: c5f2e84d90761824da7a3df1ccf174f8,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

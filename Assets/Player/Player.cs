@@ -78,7 +78,12 @@ public class Player : MonoBehaviour
         Rigidbody newProjectile = Instantiate(projectile, transform.position+Vector3.up, Quaternion.identity, null);
         Vector3 force = (new Vector3(-shootingVector.y, 0, shootingVector.x)) * 1000;
         newProjectile.AddForce(force);
-        newProjectile.GetComponent<Projectile>().needName = needName;
+
+        //newProjectile.GetComponent<Projectile>().needName = needName;
+        if(newProjectile.TryGetComponent(out Projectile p))
+        {
+            p.SetProjectile((int)needName);
+        }
     }
 
     public void ChangePlayerSpeed(int newSpeed)

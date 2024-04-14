@@ -21,7 +21,7 @@ public class EnemyStats : MonoBehaviour, IDamageable {
     }
 
     public void Damage(int satisfaction, string givenNeedName) {
-        Debug.Log($"{givenNeedName}-{needName.ToString()}");
+        Debug.Log($"{givenNeedName} - {needName.ToString()}");
         if (givenNeedName != needName.ToString()) return;
 
         needLevel -= satisfaction;

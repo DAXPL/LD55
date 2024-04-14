@@ -5,6 +5,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private GameObject deathEffect;
+    [SerializeField] private Sprite[] sprites;
+    [SerializeField] private SpriteRenderer projectileGfx;
     float lifetime = 5;
     public NeedName needName;
 
@@ -37,5 +39,10 @@ public class Projectile : MonoBehaviour
             GameObject g = Instantiate(deathEffect, transform.position, Quaternion.identity, null);
             Destroy(g,5);
         } 
+    }
+    public void SetProjectile(int type)
+    {
+        needName = (NeedName)type;
+        projectileGfx.sprite = sprites[type];
     }
 }

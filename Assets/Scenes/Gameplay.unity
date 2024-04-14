@@ -473,6 +473,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1270124401}
     m_Modifications:
+    - target: {fileID: -7393210806913044953, guid: 4dbde8e291d3bf5478941914361f84b8,
+        type: 3}
+      propertyPath: force.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2393467387186741451, guid: 4dbde8e291d3bf5478941914361f84b8,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -705,8 +710,8 @@ Transform:
   m_GameObject: {fileID: 571297263}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.62, y: 2.24, z: 0}
-  m_LocalScale: {x: 7, y: 1, z: 7}
+  m_LocalPosition: {x: -2.23, y: 2.24, z: -3.99}
+  m_LocalScale: {x: 14, y: 1, z: 15.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1270124401}
@@ -1538,6 +1543,7 @@ GameObject:
   - component: {fileID: 1454858142}
   - component: {fileID: 1454858141}
   - component: {fileID: 1454858140}
+  - component: {fileID: 1454858143}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -1554,7 +1560,7 @@ Transform:
   m_GameObject: {fileID: 1454858138}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.887, y: 0.985, z: -9.5}
+  m_LocalPosition: {x: 13.013, y: 0.985, z: -9.5}
   m_LocalScale: {x: 1, y: 2, z: 2.28}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1576,7 +1582,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454858138}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1626,17 +1632,37 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1454858143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454858138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c909be0ee0f6ed54097e5baf4f66e80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hiddenRoom: {fileID: 2135444658}
+  hiddenRoomElements: {fileID: 1497736288}
 --- !u!4 &1457968727 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1904484467215075536, guid: 7d3e0d1270ed6084ea9c48b840f26f9a,
     type: 3}
   m_PrefabInstance: {fileID: 941060630}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1497736288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 99f66079c04f95f4ba557e24b2b5d282,
+    type: 3}
+  m_PrefabInstance: {fileID: 1708849501}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1497736291 stripped
 Transform:
@@ -1655,7 +1681,7 @@ PrefabInstance:
     - target: {fileID: 5116958441456361345, guid: c5f2e84d90761824da7a3df1ccf174f8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -9.14
       objectReference: {fileID: 0}
     - target: {fileID: 5116958441456361345, guid: c5f2e84d90761824da7a3df1ccf174f8,
         type: 3}
@@ -1665,7 +1691,7 @@ PrefabInstance:
     - target: {fileID: 5116958441456361345, guid: c5f2e84d90761824da7a3df1ccf174f8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.42
       objectReference: {fileID: 0}
     - target: {fileID: 5116958441456361345, guid: c5f2e84d90761824da7a3df1ccf174f8,
         type: 3}
@@ -1933,7 +1959,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 99f66079c04f95f4ba557e24b2b5d282,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2097,7 +2123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2135444659
 Transform:
   m_ObjectHideFlags: 0

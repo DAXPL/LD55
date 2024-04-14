@@ -6,10 +6,18 @@ using UnityEngine.SceneManagement;
 public class MenuButtons : MonoBehaviour
 {
     public void ChangeScene() {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void QuitApp() {
         Application.Quit();
+    }
+
+    public void OpenSettings() {
+        SceneManager.LoadScene(3);
+    }
+
+    public void BackToMenu() {
+        SceneManager.LoadScene(0);
     }
 }

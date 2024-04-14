@@ -7,16 +7,18 @@ public class EnemyStats : MonoBehaviour, IDamageable {
     public float movementSpeed;
     public float needLevel;
     private ParticleSystem particleSystem;
+    private EnemyMovement enemyMovement;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite[] catSprites;
 
     private void Awake() {
         particleSystem = GetComponent<ParticleSystem>();
+        enemyMovement = GetComponent<EnemyMovement>();
     }
 
     //Upoœledzony konstruktor
-    public void SetCatStats(AbilityName _abilityName, NeedName _needName, float _movementSpeed, float _needLevel)
+    public void SetCatStats(AbilityName _abilityName, NeedName _needName, float _movementSpeed, float _needLevel, GameObject player)
     {
         abilityName = _abilityName;
         needName = _needName;
@@ -24,6 +26,8 @@ public class EnemyStats : MonoBehaviour, IDamageable {
         needLevel = _needLevel;
 
         spriteRenderer.sprite = catSprites[(int)needName];
+
+        enemyMovement.StartEnemyMovementCoroutine(player, movementSpeed);
     }
 
     public void Damage(int satisfaction, string givenNeedName) {

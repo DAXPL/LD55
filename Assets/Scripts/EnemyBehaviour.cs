@@ -32,7 +32,8 @@ public class EnemyBehaviour : MonoBehaviour {
         // enemy.GetComponent<SpriteRenderer>().sprite = enemySprites[ChooseEnemySprite()];
 
         // Set the enemy target to player
-        enemy.GetComponent<EnemyMovement>().StartEnemyMovementCoroutine(player);
+
+        //enemy.GetComponent<EnemyMovement>().StartEnemyMovementCoroutine(player, enemy.movementSpeed);
 
         EnemyStats stats = enemy.GetComponent<EnemyStats>();
 
@@ -44,7 +45,7 @@ public class EnemyBehaviour : MonoBehaviour {
         //stats.movementSpeed = enemyList[ChooseEnemyType()].movementSpeed;
         //stats.needLevel = enemyList[ChooseEnemyType()].needLevel;
         Enemy e = enemyList[ChooseEnemyType()];
-        stats.SetCatStats(e.abilityName, e.needName, e.movementSpeed, e.needLevel);
+        stats.SetCatStats(e.abilityName, e.needName, e.movementSpeed, e.needLevel, player);
 
     }
 

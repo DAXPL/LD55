@@ -6,9 +6,14 @@ public class EnemyStats : MonoBehaviour, IDamageable {
     public NeedName needName;
     public float movementSpeed;
     public float needLevel;
+    private ParticleSystem particleSystem;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite[] catSprites;
+
+    private void Awake() {
+        particleSystem = GetComponent<ParticleSystem>();
+    }
 
     //Upoœledzony konstruktor
     public void SetCatStats(AbilityName _abilityName, NeedName _needName, float _movementSpeed, float _needLevel)
@@ -26,6 +31,7 @@ public class EnemyStats : MonoBehaviour, IDamageable {
         if (givenNeedName != needName.ToString()) return;
 
         needLevel -= satisfaction;
+        particleSystem.Play();
 
         if (needLevel <= 0) {
             DisableCatPhysics();

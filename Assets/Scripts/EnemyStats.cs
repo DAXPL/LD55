@@ -28,18 +28,24 @@ public class EnemyStats : MonoBehaviour, IDamageable {
         needLevel -= satisfaction;
 
         if (needLevel <= 0) {
-            GetComponent<EnemyMovement>().StopEnemyMovementCoroutine();
-            GameManager.instance.CatSatisfied();
+            DisableCatPhysics();
+            GameManager.instance.AddPoint();
             StartCoroutine(CatFade());
         }
     }
 
-    public void OnTriggerEnter(Collider collision) {
+    private void OnTriggerEnter(Collider collision) {
         IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
 
         if (damageable != null) {
             damageable.Damage(10, abilityName.ToString());
         }
+    }
+
+    private void DisableCatPhysics() {
+        GetComponent<EnemyMovement>().StopEnemyMovementCoroutine();
+        GetComponent<BoxCollider>().enabled = false;
+        GetComponent<Rigidbody>().isKinematic = true;
     }
 
     private IEnumerator CatFade() {

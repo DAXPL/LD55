@@ -16,11 +16,16 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
-
-        if (damageable != null) {
-            damageable.Damage(10, needName.ToString());
+        if(collision.gameObject.TryGetComponent(out IDamageable d))
+        {
+            d.Damage(10, needName.ToString());
         }
+        //Nieco uproœci³em
+        //IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+
+        //if (damageable != null) {
+        //    damageable.Damage(10, needName.ToString());
+        //}
 
         Destroy(gameObject);
     }

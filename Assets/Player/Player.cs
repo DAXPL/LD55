@@ -10,8 +10,9 @@ public class Player : MonoBehaviour
     private CharacterController characterController;
     private Vector2 playerInput;
     private Vector2 shootingVector;
+    private bool canAttack = true;
     [SerializeField] private float speed=1;
-    [SerializeField] private Rigidbody[] projectiles;
+    [SerializeField] private Rigidbody projectile;
     [SerializeField] private SpriteRenderer playerSprite;
 
     private void Start()
@@ -30,12 +31,11 @@ public class Player : MonoBehaviour
     {
         playerInput = context.ReadValue<Vector2>();
 
-        if(playerInput.magnitude > 0 )
+        if(playerInput.magnitude > 0 && canAttack)
         {
             shootingVector = playerInput;
             playerSprite.flipX = playerInput.x < 0;
-        }
-        
+        } 
     }
 
     // play
@@ -74,9 +74,19 @@ public class Player : MonoBehaviour
 
     private void ShootProjectile(int id, NeedName needName)
     {
-        Rigidbody newProjectile = Instantiate(projectiles[id], transform.position+Vector3.up, Quaternion.identity, null);
+        if (!canAttack) return;
+        Rigidbody newProjectile = Instantiate(projectile, transform.position+Vector3.up, Quaternion.identity, null);
         Vector3 force = (new Vector3(-shootingVector.y, 0, shootingVector.x)) * 1000;
         newProjectile.AddForce(force);
         newProjectile.GetComponent<Projectile>().needName = needName;
+    }
+
+    public void ChangePlayerSpeed(int newSpeed)
+    {
+        speed = newSpeed;
+    }
+    public void TogglePlayerActions(bool newState)
+    {
+        canAttack = newState;
     }
 }

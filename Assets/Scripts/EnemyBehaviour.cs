@@ -23,7 +23,7 @@ public class EnemyBehaviour : MonoBehaviour {
             EnemyStats stats = enemy.GetComponent<EnemyStats>();
 
             // Set the stats of the enemy in the enemy script from a randomly chosen scriptable object
-            // This is very bad. Cat is a object so we should hermetize this
+            // This is very bad. Cat is a object so we should hermitize this
             // Btw losujesz innego kota co liniê. To tak mia³o byæ?
             //stats.abilityName = enemyList[ChooseEnemyType()].abilityName;
             //stats.needName = enemyList[ChooseEnemyType()].needName;

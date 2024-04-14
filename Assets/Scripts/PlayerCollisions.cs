@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerCollisions : MonoBehaviour, IDamageable {
-    public int health;//Hp powinno byæ prywatne
+    private int health;//Hp powinno byæ prywatne
     private bool isAlive = true;
     [SerializeField] private GameObject deathCanvas;
     public void Damage(int damage, string attackName) {

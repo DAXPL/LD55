@@ -3,10 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
+    [HideInInspector] public IEnumerator moveTowardsPlayerCoruntine;
 
     public void StartEnemyMovementCoroutine(GameObject player) {
-        StartCoroutine(MoveTowardsPlayer(player));
+        moveTowardsPlayerCoruntine = MoveTowardsPlayer(player);
+        StartCoroutine(moveTowardsPlayerCoruntine);
     }
+
+    public void StopEnemyMovementCoroutine() {
+        if (moveTowardsPlayerCoruntine == null) return;
+
+        StopCoroutine(moveTowardsPlayerCoruntine);
+    }
+
+
 
     public IEnumerator MoveTowardsPlayer(GameObject player) {
         while (true) {

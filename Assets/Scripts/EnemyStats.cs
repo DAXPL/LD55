@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyStats : MonoBehaviour, IDamageable {
@@ -27,7 +28,9 @@ public class EnemyStats : MonoBehaviour, IDamageable {
         needLevel -= satisfaction;
 
         if (needLevel <= 0) {
-            Destroy(gameObject);
+            GetComponent<EnemyMovement>().StopEnemyMovementCoroutine();
+            GameManager.instance.CatSatisfied();
+            StartCoroutine(CatFade());
         }
     }
 
@@ -39,4 +42,18 @@ public class EnemyStats : MonoBehaviour, IDamageable {
         }
     }
 
+    private IEnumerator CatFade() {
+        Color catColor = GetComponentInChildren<SpriteRenderer>().color;
+        float alpha = catColor.a;
+
+        while (alpha > 0) {
+            alpha -= 0.1f;
+            catColor.a = alpha;
+            GetComponentInChildren<SpriteRenderer>().color = catColor;
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        Destroy(gameObject);
+    }
 }

@@ -36,6 +36,10 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
 
+    public float GetPlayerSpeed() {
+        return speed;
+    }
+
     public void Move(InputAction.CallbackContext context)
     {
         playerInput = context.ReadValue<Vector2>();
@@ -102,7 +106,7 @@ public class Player : MonoBehaviour
         lastShot = Time.time;
     }
 
-    public void ChangePlayerSpeed(int newSpeed)
+    public void ChangePlayerSpeed(float newSpeed)
     {
         speed = newSpeed;
     }

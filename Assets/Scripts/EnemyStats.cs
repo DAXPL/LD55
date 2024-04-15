@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class EnemyStats : MonoBehaviour, IDamageable {
     public AbilityName abilityName;
@@ -9,12 +11,14 @@ public class EnemyStats : MonoBehaviour, IDamageable {
     private ParticleSystem particleSystem;
     private EnemyMovement enemyMovement;
 
+    [SerializeField] private UnityEngine.UI.Slider healthBar;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite[] catSprites;
 
     private void Awake() {
         particleSystem = GetComponent<ParticleSystem>();
         enemyMovement = GetComponent<EnemyMovement>();
+        healthBar = GetComponentInChildren<UnityEngine.UI.Slider>();
     }
 
     //Upoœledzony konstruktor
@@ -28,6 +32,9 @@ public class EnemyStats : MonoBehaviour, IDamageable {
         spriteRenderer.sprite = catSprites[(int)needName];
 
         enemyMovement.StartEnemyMovementCoroutine(player, movementSpeed);
+
+        healthBar.maxValue = needLevel;
+        healthBar.value = needLevel;
     }
 
     public void Damage(int satisfaction, string givenNeedName) {
@@ -36,19 +43,44 @@ public class EnemyStats : MonoBehaviour, IDamageable {
 
         needLevel -= satisfaction;
         particleSystem.Play();
+        UpdateHealthBar();
 
         if (needLevel <= 0) {
+            healthBar.value = 0;
             DisableCatPhysics();
             GameManager.instance.AddPoint();
             StartCoroutine(CatFade());
         }
     }
 
+    public void UpdateHealthBar() {
+        healthBar.value = needLevel;
+    }
+
     private void OnTriggerEnter(Collider collision) {
         IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
 
         if (damageable != null) {
-            damageable.Damage(10, abilityName.ToString());
+            int damageToTake = 0;
+
+            switch (abilityName) {
+                case AbilityName.scratch:
+                    damageToTake = 5;
+                break;
+
+                case AbilityName.bite:
+                    damageToTake = 10;
+                break;
+
+                case AbilityName.kick:
+                    damageToTake = 15;
+                break;
+
+                case AbilityName.pee:
+                    damageToTake = 20;
+                break;
+            }
+            damageable.Damage(damageToTake, abilityName.ToString());
         }
     }
 

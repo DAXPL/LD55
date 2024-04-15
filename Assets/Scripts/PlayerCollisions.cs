@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerCollisions : MonoBehaviour, IDamageable {
@@ -8,9 +9,15 @@ public class PlayerCollisions : MonoBehaviour, IDamageable {
     private bool isAlive = true;
     [SerializeField] private GameObject deathCanvas;
     private ParticleSystem particleSystem;
+    [SerializeField] private Slider healthBar;
 
     private void Awake() {
         particleSystem = GetComponent<ParticleSystem>();
+    }
+
+    private void Start() {
+        healthBar.maxValue = health;
+        healthBar.value = health;
     }
 
     public void Damage(int damage, string attackName) {
@@ -32,6 +39,11 @@ public class PlayerCollisions : MonoBehaviour, IDamageable {
             break;
         }
 
+        UpdatePlayerHealthBar();
+    }
+
+    private void UpdatePlayerHealthBar() {
+        healthBar.value = health;
     }
 
     public void Scratch(int value) {

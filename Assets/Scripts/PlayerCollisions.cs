@@ -4,9 +4,15 @@ using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerCollisions : MonoBehaviour, IDamageable {
-    private int health;//Hp powinno byæ prywatne
+    private int health = 100;//Hp powinno byæ prywatne
     private bool isAlive = true;
     [SerializeField] private GameObject deathCanvas;
+    private ParticleSystem particleSystem;
+
+    private void Awake() {
+        particleSystem = GetComponent<ParticleSystem>();
+    }
+
     public void Damage(int damage, string attackName) {
         switch (attackName) {
             case "scratch":
@@ -55,8 +61,22 @@ public class PlayerCollisions : MonoBehaviour, IDamageable {
     public void Pee(int value) {
         health -= value;
 
+        particleSystem.Stop();
+        StartCoroutine(PlayPeeParticle());
+
         if (health <= 0) {
             NeutralizePlayer();
+        }
+    }
+
+    public IEnumerator PlayPeeParticle() {
+        particleSystem.Play();
+        if (TryGetComponent(out Player p)) {
+            float defaultPlayerSpeed = p.GetPlayerSpeed();
+
+            p.ChangePlayerSpeed(3);
+            yield return new WaitForSeconds(1.5f);
+            p.ChangePlayerSpeed(defaultPlayerSpeed);
         }
     }
 

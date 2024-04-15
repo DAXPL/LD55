@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b429fb7288fa549b6091475c48c5dd, type: 3}
   m_Name: enemy2
   m_EditorClassIdentifier: 
-  abilityName: 3
+  abilityName: 1
   needName: 0
   movementSpeed: 0.7
   needLevel: 50

@@ -15,4 +15,4 @@ MonoBehaviour:
   abilityName: 1
   needName: 2
   movementSpeed: 0.7
-  needLevel: 300
+  needLevel: 100

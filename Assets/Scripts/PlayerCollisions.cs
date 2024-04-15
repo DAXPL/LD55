@@ -10,6 +10,11 @@ public class PlayerCollisions : MonoBehaviour, IDamageable {
     [SerializeField] private GameObject deathCanvas;
     private ParticleSystem particleSystem;
     [SerializeField] private Slider healthBar;
+    [SerializeField] private GameObject screenColorDamage;
+    [SerializeField] private GameObject screenColorPee;
+    [SerializeField] private GameObject biteScreenEffect;
+    [SerializeField] private GameObject ScratchScreenEffect;
+    [SerializeField] private GameObject kickScreenEffect;
 
     private void Awake() {
         particleSystem = GetComponent<ParticleSystem>();
@@ -48,6 +53,7 @@ public class PlayerCollisions : MonoBehaviour, IDamageable {
 
     public void Scratch(int value) {
         health -= value;
+        StartCoroutine(ScreenColorChange(ScratchScreenEffect));
 
         if (health <= 0) {
             NeutralizePlayer();
@@ -56,6 +62,7 @@ public class PlayerCollisions : MonoBehaviour, IDamageable {
 
     public void Kick(int value) {
         health -= value;
+        StartCoroutine(ScreenColorChange(kickScreenEffect));
 
         if (health <= 0) {
             NeutralizePlayer();
@@ -64,6 +71,7 @@ public class PlayerCollisions : MonoBehaviour, IDamageable {
 
     public void Bite(int value) {
         health -= value;
+        StartCoroutine(ScreenColorChange(biteScreenEffect));
 
         if (health <= 0) {
             NeutralizePlayer();
@@ -81,14 +89,24 @@ public class PlayerCollisions : MonoBehaviour, IDamageable {
         }
     }
 
+    private IEnumerator ScreenColorChange(GameObject damageText) {
+        screenColorDamage.SetActive(true);
+        damageText.SetActive(true);
+        yield return new WaitForSeconds(1);
+        screenColorDamage.SetActive(false);
+        damageText.SetActive(false);
+    }
+
     public IEnumerator PlayPeeParticle() {
         particleSystem.Play();
+        screenColorPee.SetActive(true);
         if (TryGetComponent(out Player p)) {
             float defaultPlayerSpeed = p.GetPlayerSpeed();
 
             p.ChangePlayerSpeed(3);
             yield return new WaitForSeconds(1.5f);
             p.ChangePlayerSpeed(defaultPlayerSpeed);
+            screenColorPee.SetActive(false);
         }
     }
 

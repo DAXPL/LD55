@@ -223,7 +223,13 @@ MonoBehaviour:
     type: 3}
   enemyList:
   - {fileID: 11400000, guid: 6c803cde19e81134caf1ffa3bb4311d2, type: 2}
+  - {fileID: 11400000, guid: d3a2881e65cee93498c47939c69d06e4, type: 2}
+  - {fileID: 11400000, guid: 200de644ece1b5041afd6af5b8e8935e, type: 2}
+  - {fileID: 11400000, guid: b454810de84b9f04599d15bb5fd94745, type: 2}
   - {fileID: 11400000, guid: 7d90832644b58ec4fa4ead862a1c9379, type: 2}
+  - {fileID: 11400000, guid: 7ac39d837e30b2d469eef2b9ba968ec8, type: 2}
+  - {fileID: 11400000, guid: 7b47d0837efdb2247a0f5e9ef7174ae0, type: 2}
+  - {fileID: 11400000, guid: d9b55af11ce936c4ebc8d09a699ff923, type: 2}
   enemySprites:
   - {fileID: 21300000, guid: 031c5726ca65234478e9bd23e0009fc2, type: 3}
   - {fileID: 21300000, guid: bc1dcc781e15d404495c9e99cc2b62fa, type: 3}
@@ -1767,7 +1773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8adb65abb79a0494980e5899e6bba434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyBehaviour: {fileID: 0}
+  enemyBehaviour: {fileID: 196081040}
   pointsUI: {fileID: 1451427000}
 --- !u!4 &1518563512
 Transform:

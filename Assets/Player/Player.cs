@@ -14,10 +14,15 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed=1;
     [SerializeField] private Rigidbody projectile;
     [SerializeField] private SpriteRenderer playerSprite;
+    private AudioSource ass;
+    [SerializeField] private AudioClip[] meows;
+    [SerializeField] private float shootDelay = 0.3f;
+    float lastShot = 0;
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        ass = GetComponent<AudioSource>();
     }
 
 
@@ -79,6 +84,8 @@ public class Player : MonoBehaviour
     private void ShootProjectile(int id, NeedName needName)
     {
         if (!canAttack) return;
+        if (Time.time < lastShot + shootDelay) return;
+
         Rigidbody newProjectile = Instantiate(projectile, transform.position+Vector3.up, Quaternion.identity, null);
         Vector3 force = (new Vector3(-shootingVector.y, 0, shootingVector.x)) * 1000;
         newProjectile.AddForce(force);
@@ -88,6 +95,11 @@ public class Player : MonoBehaviour
         {
             p.SetProjectile((int)needName);
         }
+        if(ass != null)
+        {
+            ass.PlayOneShot(meows[Random.Range(0,meows.Length)]);
+        }
+        lastShot = Time.time;
     }
 
     public void ChangePlayerSpeed(int newSpeed)
